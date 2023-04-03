@@ -1,11 +1,10 @@
-const express = require("express");
-const cors = require("cors");
+const express = require("express")
+const cors = require("cors")
 
-const app = express();
+const app = express()
 
-app.use(cors());
-
-app.use(express.json());
+app.use(express.json())
+app.use(cors())
 
 const {getCompliment, getFortune, getInspiration, addInspiration, deleteInspiration} = require('./controller')
 

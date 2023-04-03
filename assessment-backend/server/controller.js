@@ -1,5 +1,5 @@
-let globalID = 2;
 const inspiration = require('./db.json')
+let globalID = 2;
 
 module.exports = {
 
@@ -26,7 +26,7 @@ module.exports = {
         res.status(200).send(inspiration)
     },
 
-    createInspiration: (req,res) => {
+    addInspiration: (req,res) => {
         const {quote, imageURL} = req.body;
        
         let newInsp = {
@@ -37,6 +37,13 @@ module.exports = {
 
         inspiration.push(newInsp)
         globalID++
+        res.status(200).send(inspiration)  
+    },
+
+    deleteInspiration: (req,res) => {
+        const {id} = req.params
+        let index  = inspiration.findIndex((elem) => elem.id === +id)
+        inspiration.splice(index, 1)
         res.status(200).send(inspiration)
-}
+    }
 }
